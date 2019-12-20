@@ -1,7 +1,7 @@
 
 [![npm version](https://badge.fury.io/js/ngx-emoji-picker.svg)](https://badge.fury.io/js/ngx-emoji-picker)
 
-# Ngx-Emoji-Picker
+# Ngx-Emoji-MOC
 This project was forked from the [ionic3-emoji-picker](https://github.com/danielehrhardt/ionic3-emoji-picker) project created by [danielehrhardt](https://github.com/danielehrhardt)
 
 ## What's New
