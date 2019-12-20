@@ -4,7 +4,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
   selector: 'emoji-button',
   styleUrls: ['../styles/emoji-button.scss'],
   template: `
-    <button
+    <button type="button"
       class="emoji-button" 
       (click)="selectionEmitter.emit(dataToEmit || emoji)">
       {{emoji[0]}}
