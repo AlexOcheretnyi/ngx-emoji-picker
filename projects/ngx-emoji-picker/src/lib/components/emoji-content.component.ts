@@ -9,9 +9,9 @@ import { EmojiListComponent } from './emoji-list.component';
   <emoji-header 
     [emojisCategories]="emojisCategories"
     (categorySelection)="categorySelectionHandler($event)"
-    (search)="searchHandler($event)"></emoji-header>
+  ></emoji-header>
   <emoji-list [emojis]="emojis" (emoji-selection)="emojiSelectionEmitter.emit($event)"></emoji-list>
-  <emoji-footer></emoji-footer>
+  <emoji-footer (search)="searchHandler($event)"></emoji-footer>
   `
 })
 
@@ -27,7 +27,7 @@ export class EmojiContentComponent {
 
   searchHandler(value) {
     let filteredEmojis = this.emojisCategories.map(category => Object.assign({}, category, { emojis : [] }));
-    
+
     value = value.replace(/-/g, '').toLowerCase();
 
     Object.keys(this._emojis).forEach(i => {
