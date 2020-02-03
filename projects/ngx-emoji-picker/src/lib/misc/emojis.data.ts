@@ -760,7 +760,7 @@ export const EMOJIS = [
       ['🌉', 'bridge_at_night'],
       ['🌁', 'foggy']
     ],
-    name: 'Places',
+    name: 'PLACES',
     icon: ['🚗', 'car']
   },
   {
