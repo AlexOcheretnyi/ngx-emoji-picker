@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ElementRef, Renderer } from '@angular/core';
+import {Component, EventEmitter, Output, ElementRef, OnDestroy, Renderer2} from '@angular/core';
 import { DIRECTIONS } from '../misc/picker-directions';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime} from 'rxjs/operators';
@@ -19,9 +19,9 @@ import { takeUntil, debounceTime} from 'rxjs/operators';
   }
 })
 
-export class EmojiPickerComponent {
+export class EmojiPickerComponent implements  OnDestroy {
   @Output('emoji-select') selectionEmitter = new EventEmitter();
-  @Output('picker-close') pickerCloseEmitter = new EventEmitter(); 
+  @Output('picker-close') pickerCloseEmitter = new EventEmitter();
 
   public _lastHostMousedownEvent;
   public _currentTarget: ElementRef;
@@ -30,12 +30,12 @@ export class EmojiPickerComponent {
   public _windowResize = new Subject<any>();
   public _destroyed = new Subject<boolean>();
 
-  constructor(private _renderer: Renderer, private _el: ElementRef) {
+  constructor(private _renderer: Renderer2, private _el: ElementRef) {
     this._windowResize
       .pipe(takeUntil(this._destroyed), debounceTime(100))
       .subscribe(event => {
         this.setPosition(this._currentTarget, this._currentDirection);
-      })
+      });
   }
 
   setPosition(target: ElementRef, directionCode: DIRECTIONS = DIRECTIONS.bottom) {
@@ -43,7 +43,7 @@ export class EmojiPickerComponent {
       return console.error('Emoji-Picker: positioning failed due to missing target element or direction code');
     }
 
-    this._renderer.setElementStyle(this._el.nativeElement, 'transform', '');
+    this._renderer.setStyle(this._el.nativeElement, 'transform', '');
 
     /** Store anchor and direction */
     this._currentTarget = target;
@@ -98,9 +98,8 @@ export class EmojiPickerComponent {
     if (thisBorders.left + widthCorrection < 0) {
       widthCorrection -= (thisBorders.left + widthCorrection);
     }
-    
     /** set the position adjustments to the emoji picker element */
-    this._renderer.setElementStyle(this._el.nativeElement, 'transform', `translate(${widthCorrection}px,${heightCorrection}px)`);
+    this._renderer.setStyle(this._el.nativeElement, 'transform', `translate(${widthCorrection}px,${heightCorrection}px)`);
   }
 
   onBackground(event) {
@@ -114,5 +113,6 @@ export class EmojiPickerComponent {
 
   ngOnDestroy() {
     this._destroyed.next(true);
+    this._destroyed.complete();
   }
 }

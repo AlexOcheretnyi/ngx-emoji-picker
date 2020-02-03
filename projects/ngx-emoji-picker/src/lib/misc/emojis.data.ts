@@ -292,7 +292,7 @@ export const EMOJIS = [
       ['🌂', 'closed_umbrella'],
       ['☂️', 'open_umbrella']
     ],
-    name: 'People',
+    name: 'SMILEYS & PEOPLE',
     icon: ['😄', 'smile']
   },
   {
@@ -457,7 +457,7 @@ export const EMOJIS = [
       ['💦', 'sweat_drops'],
       ['☔️', 'umbrella']
     ],
-    name: 'Nature',
+    name: 'NATURE',
     icon: ['🌸', 'cherry_blossom']
   },
   {
@@ -549,7 +549,7 @@ export const EMOJIS = [
       ['🍴', 'fork_and_knife'],
       ['🍽', 'plate_with_cutlery']
     ],
-    name: 'Foods',
+    name: 'FOODS',
     icon: ['🍔', 'hamburger']
   },
   {
@@ -635,7 +635,7 @@ export const EMOJIS = [
       ['🎮', 'video_game'],
       ['🎰', 'slot_machine']
     ],
-    name: 'Activity',
+    name: 'ACTIVITY',
     icon: ['⚽️', 'soccer']
   },
   {
@@ -939,7 +939,7 @@ export const EMOJIS = [
       ['🔒', 'lock'],
       ['🔓', 'unlock']
     ],
-    name: 'Objects',
+    name: 'OBJECTS',
     icon: ['🔔', 'bell']
   },
   {
@@ -1216,7 +1216,7 @@ export const EMOJIS = [
       ['🕦', 'clock1130'],
       ['🕧', 'clock1230']
     ],
-    name: 'Symbols',
+    name: 'SYMBOLS',
     icon: ['🔠', 'capital_abcd']
   }
 ]

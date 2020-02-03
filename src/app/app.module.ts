@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { NgxEmojiPickerModule  } from 'ngx-emoji-picker';
+import { NgxEmojiPickerModule  } from '../../projects/ngx-emoji-picker/src/lib/ngx-emoji-picker.module';
 import { AppComponent } from './app.component';
 
 @NgModule({

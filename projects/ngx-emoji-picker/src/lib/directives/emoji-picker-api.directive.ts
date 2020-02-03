@@ -7,7 +7,7 @@ import {
   ComponentRef,
   ElementRef,
   EventEmitter,
-  Output
+  Output, OnDestroy
 } from '@angular/core';
 import { Subject ,  Subscription } from 'rxjs';
 import { takeUntil, distinctUntilChanged} from 'rxjs/operators';
@@ -23,7 +23,7 @@ import { EmojiEvent } from '../misc/emoji-event';
     '(click)': '$event.emojiPickerExempt = true' // marking off event listening on anchor
   }
  })
-export class EmojiPickerApiDirective {
+export class EmojiPickerApiDirective implements OnDestroy {
   private _directionCode: DIRECTIONS = DIRECTIONS.bottom;
   private _searchBar: Boolean = false;
 
@@ -41,7 +41,7 @@ export class EmojiPickerApiDirective {
     this._emojiPickerOpenState.next(condition);
   }
   @Output('emojiPickerIfChange') emojiPickerIfEmitter = new EventEmitter<boolean>();
-  
+
   @Output('emojiPickerSelect') selectEmitter = new EventEmitter();
 
   private _emojiPickerOpenState = new Subject<boolean>();
@@ -87,12 +87,13 @@ export class EmojiPickerApiDirective {
 
     this._emojiSubs.forEach((subscription: Subscription) => subscription.unsubscribe());
     this._emojiPickerRef.destroy();
-    
+
     this._emojiSubs = [];
     delete this._emojiPickerRef;
   }
 
   ngOnDestroy() {
     this._destroyed.next(true);
+    this._destroyed.complete();
   }
 }
